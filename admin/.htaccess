@@ -1,0 +1,57 @@
+IndexIgnore *
+
+ErrorDocument 404 "<title>Pheashop</title><script>function goBack(){window.history.back();}</script><link rel='shortcut icon' href='img/favicon.ico'><div style='text-align:center;margin-top:50px;'><img src='../img/404.gif' width='50%'><br><button onclick='goBack()'>KEMBALI</button></div>"
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+RewriteRule ^ceklogin.html$ cek.php
+RewriteRule ^homepage.html$ login.php
+RewriteRule ^keluarakses.html$ keluar.php
+
+#PENGATURAN
+
+RewriteRule ^aturhakakses.html$ m_hakakses.php
+RewriteRule ^aturhakakses.html$ m_hakakses.php?$id=$1
+RewriteRule ^aturhakaksesproses.html$ m_hakakses_proses.php
+RewriteRule ^aturhakakseshapus.html$ m_hakakses_hapus.php?$id=$1
+
+RewriteRule ^aturpaket.html$ m_paket.php
+RewriteRule ^aturpaket.html$ m_paket.php?$id=$1
+RewriteRule ^aturpaketproses.html$ m_paket_proses.php
+RewriteRule ^aturpakethapus.html$ m_paket_hapus.php?$id=$1
+
+#TRANSAKSI
+
+RewriteRule ^pelanggan.html$ t_pelanggan.php
+RewriteRule ^pelanggan.html$ t_pelanggan.php?$id=$1
+RewriteRule ^pelangganproses.html$ t_pelanggan_proses.php
+RewriteRule ^pelangganhapus.html$ t_pelanggan_hapus.php?$id=$1
+
+RewriteRule ^pemesanan.html$ t_pemesanan.php
+RewriteRule ^pemesanan.html$ t_pemesanan.php?$id=$1
+RewriteRule ^pemesananproses.html$ t_pemesanan_proses.php
+RewriteRule ^pemesananhapus.html$ t_pemesanan_hapus.php?$id=$1
+
+RewriteRule ^pembayaran.html$ t_pembayaran.php
+RewriteRule ^pembayaran.html$ t_pembayaran.php?$id=$1
+RewriteRule ^pembayaranproses.html$ t_pembayaran_proses.php
+RewriteRule ^pembayaranhapus.html$ t_pembayaran_hapus.php?$id=$1
+
+RewriteRule ^bank.html$ t_bank.php
+RewriteRule ^bank.html$ t_bank.php?$id=$1
+RewriteRule ^bankproses.html$ t_bank_proses.php
+RewriteRule ^bankhapus.html$ t_bank_hapus.php
+RewriteRule ^bankedit.html$ t_tambah_bank.php
+
+
+#LAPORAN
+
+RewriteRule ^reportpelanggan.html$ sta_pelanggan.php
+RewriteRule ^reportpemesanan.html$ sta_pemesanan.php
+RewriteRule ^reportpembayaran.html$ sta_pembayaran.php
+
+</IfModule>

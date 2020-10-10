@@ -1,0 +1,34 @@
+IndexIgnore *
+
+ErrorDocument 404 "<title>GRAHA KIRANI ATAMBUA NTT</title><script>function goBack(){window.history.back();}</script><link rel='shortcut icon' href='img/favicon.ico'><div style='text-align:center;margin-top:50px;'><img src='img/404.gif' width='50%'><br><button onclick='goBack()'>KEMBALI</button></div>"
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#MENU
+
+RewriteRule ^paketsewa.html$ m_paket.php
+RewriteRule ^keranjang.html$ m_keranjang.php
+RewriteRule ^keranjangproses.html$ m_keranjang_proses.php
+RewriteRule ^formpesan.html$ form_pesan.php
+RewriteRule ^form_pesan_proses.html$ form_pesan_proses.php
+
+
+RewriteRule ^kontak.html$ m_kontak.php
+
+RewriteRule ^pendaftaran.html$ m_daftar.php
+RewriteRule ^prosespendaftaran.html$ m_daftar_proses.php
+
+
+
+
+RewriteRule ^login.html$ m_masuk.php
+RewriteRule ^proseslogin.html$ m_masuk_proses.php
+
+
+RewriteRule ^masuk.html$ m_login.php
+RewriteRule ^logout.html$ m_keluar.php
+
+</IfModule>
