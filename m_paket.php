@@ -46,14 +46,19 @@
                       <li>Fasilitas: ".$paket["fasilitas"]."</li>
                     </ul>
                   </div>
-                  <div class='plan-button'>
-                    <a href='m_keranjang.php' class='btn btn-common btn-effect'>Pesan</a>
+                  <div class='plan-button' onclick='myFunction()'>
+                    <a href='m_daftar.php' class='btn btn-common btn-effect' >Pesan</a>
                   </div>
                 </div>
               </div>
               ";
             }
           ?>
+          <script>
+          function myFunction() {
+           alert("Maaf,Untuk Melakukan Pesan Anda Harus Melakukan Login Terlebih Dahulu!");
+          }
+          </script>
 
         </div>
       </div>
