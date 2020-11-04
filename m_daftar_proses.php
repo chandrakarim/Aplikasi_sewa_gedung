@@ -98,7 +98,7 @@ if (isset($_POST['kirim'])) {
 	$mail->Port       = 465;                   // SMTP port to connect to GMail
 	$mail->Username   = "pachanddfs@gmail.com";  // alamat email kamu
 	$mail->Password   = "janti123ku";            // password GMail
-	$mail->SetFrom("pachanddfs@gmail.com", 'noreply');  //Siapa yg mengirim email
+	$mail->SetFrom("pachanddfs@gmail.com", 'Admin Graha Kirani Atambua');  //Siapa yg mengirim email
 	$mail->Subject    = 'Verifikasi';
 	$mail->Body       = "no ktp : ".$ktp."<br>"."Nama : ".$nama."<br>"."Jenis Kelamin :".$jk."<br>"."alamat :".$alamat."<br>".
 						"Email :".$imel."<br>"."Password :".$kunci."<br>". "Telepon".$telp; 
