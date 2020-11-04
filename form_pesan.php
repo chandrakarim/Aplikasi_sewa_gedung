@@ -4,7 +4,6 @@
   require"admin/function.php";
   $var = decode($_SERVER['REQUEST_URI']);
   $antarid = $var["id"];
-
   //var_dump($antarid);
   //$user =   $_SESSION["user"];
   // $query = mysqli_query($konek, "select * from t_pemesanan where id='$antarid'");
@@ -17,6 +16,7 @@
   </head>
   
 <body>
+
     <!-- Header Section Start -->
     <header id="slider-area">  
     <?php include"menu.php";
@@ -75,6 +75,7 @@
                 <form class='form-horizontal' action="form_pesan_proses.html" method="post"  enctype='multipart/form-data'>
                   <input type="hidden" value="<?php echo $antarid; ?>" name="id">
                  <div class='card-body'>
+                 
             
                 </div>
               </div>

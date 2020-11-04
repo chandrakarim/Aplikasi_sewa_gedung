@@ -1,7 +1,7 @@
  <?php 
   session_start();
   include "admin/koneksi.php";
-  require"admin/function.php";
+  require "admin/function.php";
   $var = decode($_SERVER['REQUEST_URI']);
   $antarid = $var["id"];
 
@@ -21,7 +21,7 @@
         include"carousel.php"; ?>
     </header>
     <!-- Header Section End --> 
-
+  
     <!-- Start Pricing Table Section -->
        <div class="container">
         <div class="section-header">          
@@ -92,7 +92,7 @@
                         <?php 
                         if(empty($antarid)){
                           echo'
-                            <button class="btn btn-success" type="submit">Daftar</button>
+                            <button class="btn btn-success" type="submit" name="kirim" >Daftar</button>
                             <button class="btn btn-danger" type="reset">Batal</button>
                             <a href="login.html" class="btn btn-primary">Login</a>
                           ';

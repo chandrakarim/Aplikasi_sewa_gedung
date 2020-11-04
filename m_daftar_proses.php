@@ -1,6 +1,6 @@
 <?php
-include"admin/koneksi.php";
-include"admin/function.php";
+include "admin/koneksi.php";
+include "admin/function.php";
 $var = decode($_SERVER['REQUEST_URI']);
 $ktp = mysqli_real_escape_string($konek,$_POST["ktp"]);
 $alamat = mysqli_real_escape_string($konek,$_POST["alamat"]);
@@ -74,4 +74,42 @@ else
 		setTimeout(\"location.href='javascript:history.back()'\");</script>";
 	}
 }
+//mengirim data ke Email
+if (isset($_POST['kirim'])) {
+
+	require "PHPMailer/PHPMailerAutoload.php";
+	$id = $_POST["id"];
+	$ktp=$_POST['ktp'];
+	$nama=$_POST['nama'];
+	$jk=$_POST['jk'];
+	$alamat=$_POST['alamat'];
+	$imel=$_POST['imel'];
+	$kunci=$_POST['kunci'];
+	$imel=$_POST['imel'];
+	$telp=$_POST['telp'];
+
+	$mail = new PHPMailer();
+
+	$mail->IsHTML(true);    // set email format to HTML
+	$mail->IsSMTP();   // we are going to use SMTP
+	$mail->SMTPAuth   = true; // enabled SMTP authentication
+	$mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
+	$mail->Host       = "smtp.gmail.com";      // setting GMail as our SMTP server
+	$mail->Port       = 465;                   // SMTP port to connect to GMail
+	$mail->Username   = "pachanddfs@gmail.com";  // alamat email kamu
+	$mail->Password   = "janti123ku";            // password GMail
+	$mail->SetFrom("pachanddfs@gmail.com", 'noreply');  //Siapa yg mengirim email
+	$mail->Subject    = 'Verifikasi';
+	$mail->Body       = "no ktp : ".$ktp."<br>"."Nama : ".$nama."<br>"."Jenis Kelamin :".$jk."<br>"."alamat :".$alamat."<br>".
+						"Email :".$imel."<br>"."Password :".$kunci."<br>". "Telepon".$telp; 
+	$mail->AddAddress($imel);
+
+	if(!$mail->Send()) {
+		echo "Eror: ".$mail->ErrorInfo;
+		exit;
+	}else {
+		echo "Email telah berhasil dikirim";
+	}
+}
+
 ?>

@@ -23,7 +23,8 @@
         include"carousel.php"; ?>
     </header>
     <!-- Header Section End --> 
-          </aside>
+    </aside>
+
         
           <!-- Start Pricing Table Section -->
     <div id="pricing" class="section pricing-section">

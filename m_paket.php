@@ -47,7 +47,7 @@
                     </ul>
                   </div>
                   <div class='plan-button' onclick='myFunction()'>
-                    <a href='m_daftar.php' class='btn btn-common btn-effect' >Pesan</a>
+                    <a href='m_masuk.php' class='btn btn-common btn-effect' >Pesan</a>
                   </div>
                 </div>
               </div>
