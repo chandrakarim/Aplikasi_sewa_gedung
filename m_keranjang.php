@@ -57,10 +57,24 @@
                         <div class='col-sm-10'>
                         <?php
                        $id = $_SESSION["id"];
-                   //  var_dump($_SESSION);
+                     //  $imel = $_SESSION["imel"];
+                   //  var_dump($imel);
                       // var_dump($user);    
                         ?>
-                        <input type="hidden" name="id_t_pelanggan"value="<?php echo $id ?>">                     
+                        <input type="hidden" name="id_t_pelanggan"value="<?php echo $id ?>"> 
+                                                                   
+                      </div> 
+                    </div>
+                    <div class="form-group row">
+                        <div class='col-sm-10'>
+                        <?php
+                     //  $id = $_SESSION["id"];
+                       $imel = $_SESSION["imel"];
+                  //  var_dump($_SESSION["imel"]);
+                      // var_dump($user);    
+                        ?>
+                        <input type="hidden" name="imel"value="<?php echo $imel ?>"> 
+                                                                   
                       </div> 
                     </div>
                   

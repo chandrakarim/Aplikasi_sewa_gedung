@@ -76,24 +76,24 @@ if(empty($id))
 $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,nama,deposit,tanggal,jam,orang,id_m_paket)values('$Kodenya','$tgl_pesan','$id_t_pelanggan','$nama','$deposit','$tgl','$jam','$orang','$id_m_paket')";
 //var_dump($masuk); die();
     $masukkan = mysqli_query($konek,$masuk);
-    // if($masukkan)
-    // {
-    //     echo"<script>
-    //     window.alert('DATA TELAH DISIMPAN!');
-    //     setTimeout(\"location.href='formpesan.html'\");</script>";
-    // }
-    // else
-    // {
-    //     echo"<script>
-    //     window.alert('DATA GAGAL DISIMPAN!');
-    //     setTimeout(\"location.href='javascript:history.back()'\");</script>";
-    //  }  
+    if($masukkan)
+    {
+        echo"<script>
+        window.alert('DATA TELAH DISIMPAN!');
+        setTimeout(\"location.href='formpesan.html'\");</script>";
+    }
+    else
+    {
+        echo"<script>
+        window.alert('DATA GAGAL DISIMPAN!');
+        setTimeout(\"location.href='javascript:history.back()'\");</script>";
+     }  
 }
 //mengirim data ke Email
 if (isset($_POST['kirim'])) {
     
 	require "PHPMailer/PHPMailerAutoload.php";
-	$id = $_POST["id"];
+	$imel = $_POST["imel"];
 	$tgl_pesan = $_POST['tgl_pesan'];
 	$id_t_pelanggan = $_POST['id_t_pelanggan'];
 	$nama = $_POST['nama'];
@@ -103,7 +103,8 @@ if (isset($_POST['kirim'])) {
 	$jam=$_POST['jam'];
 	$orang=$_POST['orang'];
     
-    var_dump($id_t_pelanggan); die(); 
+
+   // var_dump($id_t_pelanggan); die(); 
 	$mail = new PHPMailer();
 
 	$mail->IsHTML(true);    // set email format to HTML
@@ -118,7 +119,7 @@ if (isset($_POST['kirim'])) {
 	$mail->Subject    = 'Verifikasi'; 
 	$mail->Body       = "Tanggal Pesan : ".$tgl_pesan."<br>"."Nama : ".$nama."<br>"."Paket : ".$id_m_paket."<br>"."Deposit : ".$deposit."<br>".
 						"Tanggal Pelaksanaan : ".$tgl."<br>"."Jam : ".$jam."<br>"."Jumlah Orang : ".$orang; 
-	$mail->AddAddress($namaakun);
+	$mail->AddAddress($imel);
 
 	if(!$mail->Send()) {
 		echo "Eror: ".$mail->ErrorInfo;
