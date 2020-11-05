@@ -1,7 +1,7 @@
  <?php 
   session_start();
   include "admin/koneksi.php";
-  require"admin/function.php";
+  require "admin/function.php";
   $var = decode($_SERVER['REQUEST_URI']);
   $antarid = $var["id"];
   //var_dump($antarid);
@@ -116,7 +116,7 @@
                         <?php 
                         if(empty($antarid)){
                           echo'
-                            <button class="btn bg-success" type="submit">Simpan</button>
+                            <button class="btn bg-success" type="submit" name="kirim" >Simpan</button>
                             <button class="btn bg-danger" type="reset">Batal</button>
                           ';
                         }

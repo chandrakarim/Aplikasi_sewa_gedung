@@ -1,7 +1,7 @@
 <?php 
   session_start();
   include "admin/koneksi.php";
-  require"admin/function.php";
+  require "admin/function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

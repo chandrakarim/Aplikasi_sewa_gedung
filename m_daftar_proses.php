@@ -28,7 +28,7 @@ if(empty($id))
 		{
 			echo"<script>
 			window.alert('PENDAFTARAN BERHASIL, SILAKAN LOGIN MENGGUNAKAN EMAIL DAN PASSWORD YANG DIDAFTARKAN!');
-			setTimeout(\"location.href='pendaftaran.html'\");</script>";
+			setTimeout(\"location.href='login.html'\");</script>";
 		}
 		else
 		{
@@ -100,15 +100,15 @@ if (isset($_POST['kirim'])) {
 	$mail->Password   = "janti123ku";            // password GMail
 	$mail->SetFrom("pachanddfs@gmail.com", 'Admin Graha Kirani Atambua');  //Siapa yg mengirim email
 	$mail->Subject    = 'Verifikasi';
-	$mail->Body       = "no ktp : ".$ktp."<br>"."Nama : ".$nama."<br>"."Jenis Kelamin :".$jk."<br>"."alamat :".$alamat."<br>".
-						"Email :".$imel."<br>"."Password :".$kunci."<br>". "Telepon".$telp; 
+	$mail->Body       = "No Ktp : ".$ktp."<br>"."Nama : ".$nama."<br>"."Jenis Kelamin : ".$jk."<br>"."alamat : ".$alamat."<br>".
+						"Email : ".$imel."<br>"."Password : ".$kunci."<br>"."Telepon : ".$telp; 
 	$mail->AddAddress($imel);
 
 	if(!$mail->Send()) {
 		echo "Eror: ".$mail->ErrorInfo;
 		exit;
 	}else {
-		echo "Email telah berhasil dikirim";
+		exit;
 	}
 }
 

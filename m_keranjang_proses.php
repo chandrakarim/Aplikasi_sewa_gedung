@@ -1,6 +1,7 @@
 <?php
-include"admin/koneksi.php";
-include"admin/function.php";
+include "admin/koneksi.php";
+include "admin/function.php";
+
 //include"PHPMailer";
 //var_dump($_POST); die();
 $var = decode($_SERVER['REQUEST_URI']);
@@ -75,17 +76,55 @@ if(empty($id))
 $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,nama,deposit,tanggal,jam,orang,id_m_paket)values('$Kodenya','$tgl_pesan','$id_t_pelanggan','$nama','$deposit','$tgl','$jam','$orang','$id_m_paket')";
 //var_dump($masuk); die();
     $masukkan = mysqli_query($konek,$masuk);
-    if($masukkan)
-    {
-        echo"<script>
-        window.alert('DATA TELAH DISIMPAN!');
-        setTimeout(\"location.href='formpesan.html'\");</script>";
-    }
-    else
-    {
-        echo"<script>
-        window.alert('DATA GAGAL DISIMPAN!');
-        setTimeout(\"location.href='javascript:history.back()'\");</script>";
-     }  
+    // if($masukkan)
+    // {
+    //     echo"<script>
+    //     window.alert('DATA TELAH DISIMPAN!');
+    //     setTimeout(\"location.href='formpesan.html'\");</script>";
+    // }
+    // else
+    // {
+    //     echo"<script>
+    //     window.alert('DATA GAGAL DISIMPAN!');
+    //     setTimeout(\"location.href='javascript:history.back()'\");</script>";
+    //  }  
+}
+//mengirim data ke Email
+if (isset($_POST['kirim'])) {
+    
+	require "PHPMailer/PHPMailerAutoload.php";
+	$id = $_POST["id"];
+	$tgl_pesan = $_POST['tgl_pesan'];
+	$id_t_pelanggan = $_POST['id_t_pelanggan'];
+	$nama = $_POST['nama'];
+	$id_m_paket = $_POST['id_m_paket'];
+	$deposit = $_POST['deposit'];
+	$tgl = $_POST['tgl'];
+	$jam=$_POST['jam'];
+	$orang=$_POST['orang'];
+    
+    var_dump($id_t_pelanggan); die(); 
+	$mail = new PHPMailer();
+
+	$mail->IsHTML(true);    // set email format to HTML
+	$mail->IsSMTP();   // we are going to use SMTP
+	$mail->SMTPAuth   = true; // enabled SMTP authentication
+	$mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
+	$mail->Host       = "smtp.gmail.com";      // setting GMail as our SMTP server
+	$mail->Port       = 465;                   // SMTP port to connect to GMail
+	$mail->Username   = "pachanddfs@gmail.com";  // alamat email kamu
+	$mail->Password   = "janti123ku";            // password GMail
+	$mail->SetFrom("pachanddfs@gmail.com", 'Admin Graha Kirani Atambua');  //Siapa yg mengirim email
+	$mail->Subject    = 'Verifikasi'; 
+	$mail->Body       = "Tanggal Pesan : ".$tgl_pesan."<br>"."Nama : ".$nama."<br>"."Paket : ".$id_m_paket."<br>"."Deposit : ".$deposit."<br>".
+						"Tanggal Pelaksanaan : ".$tgl."<br>"."Jam : ".$jam."<br>"."Jumlah Orang : ".$orang; 
+	$mail->AddAddress($namaakun);
+
+	if(!$mail->Send()) {
+		echo "Eror: ".$mail->ErrorInfo;
+		exit;
+	}else {
+		exit;
+	}
 }
 ?>
