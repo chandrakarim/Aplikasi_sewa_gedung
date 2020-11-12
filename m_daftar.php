@@ -51,7 +51,7 @@
                       <div class="col-md-6">
                       <div class="form-group">
                     <label class='col-sm-3 col-form-label'>Jenis Kelamin</label>
-                    <select name="jk"  required>
+                    <select name="jk" class="form-control form-control-lg"  required>
                       <option selected>Pilih Jenis Kelamin  </option>
                         <option value ="Laki-Laki">Laki-Laki</option>
                         <option value ="Perempuan">Perempuan</option>                     

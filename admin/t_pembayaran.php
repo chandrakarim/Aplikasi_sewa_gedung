@@ -37,16 +37,19 @@
 
                         <h3 class='card-title'><a href='t_tambah_pembayaran.php' class='btn bg-success'>Tambah Data</a>
                       </div>
-                        <table id='pembayaran' class='display compact' style='width:100%'>
+                      <div class='card-body'>
+                        <table id='pembayaran' class='display compact'>
                             <thead>
                                 <tr align='center'>
                                     <th>#</th>
                                     <th>Kode</th>
                                     <th>Kode Pesan</th>
+                                    <th>Nama Pesan</th>
                                     <th>Tgl Bayar</th>
                                     <th>Metode</th>
                                     <th>Nominal</th>
                                     <th>Bank</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>";
@@ -59,12 +62,15 @@
                                     echo'
                                     <tr align="center">
                                         <td><a id="edit" href="pembayaran.html?'.paramEncrypt("id=$list[id]").'"><i class="fa fa-pencil-alt"></i></a> <a href="pembayaranhapus.html?'.paramEncrypt("id=$list[id]").'" onclick="javascript:return confirm(\'Anda yakin menghapus?\');"><i class="fa fa-trash"></i></a></td>
+                                        <td>'.$list["Kodenya"].'</td>
                                         <td>'.$list["kode"].'</td>
-                                        <td>'.$pesan["kode"].'</td>
+                                        <td>'.$list["nama"].'</td>
                                         <td>'.$list["tgl_bayar"].'</td>
-                                        <td>'.$list["cara"].'</td>
+                                        <td>'.$list["metode"].'</td>
+                                        <td>'.$list["bukti"].'</td>
                                         <td>'.$numHarga.'</td>
-                                        <td>'.$list["bank"].' '.$list["rekening"].' '.$list["atas_nama"].'</td>
+                                        <td>'.$list["bank"].'</td>
+                                        <td>'.$list["status"].'</td>
                                     </tr>   
                                     ';
                                 }

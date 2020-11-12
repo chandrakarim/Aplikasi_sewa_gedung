@@ -10,23 +10,26 @@
                 if(isset($_SESSION["imel"])){
                     $ses_id = $_SESSION["id"];
                     echo"<li class='nav-item'><a class='nav-link page-scroll' href='./?".paramEncrypt("id=$ses_id")."'>Beranda</a></li>";
-                    echo"<li class='nav-item'><a class='nav-link page-scroll' href='formpesan.html'>Konfirmasi</a></li>";
+                    ;
                 }else{
-                    echo'<li class="nav-item"><a class="nav-link page-scroll" href="./">Beranda</a></li>';    
+                    echo'<li class="nav-item"><a class="nav-link page-scroll" href="./">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll" href="paketsewa.html">Paket Sewa</a></li>
+                        <li class="nav-item"><a class="nav-link page-scroll" href="kontak.html">Kontak Kami</a></li>';    
                 }
                 
                 ?>
-                <li class="nav-item"><a class="nav-link page-scroll" href="paketsewa.html">Paket Sewa</a></li>
-                <li class="nav-item"><a class="nav-link page-scroll" href="kontak.html">Kontak</a></li>
+               
                     
                 <?php
                     if(isset($_SESSION["imel"])){
                         $ses_id = $_SESSION["id"];
                         echo"
         <li class='nav-item'><a class='nav-link page-scroll' href='keranjang.html'>Keranjang</a></li>
+        <li class='nav-item'><a class='nav-link page-scroll' href='formpesan.html'>Konfirmasi</a></li>
+        <li class='nav-item'><a class='nav-link page-scroll' href='kontak.html'>Kontak Kami</a></li>
         <li class='nav-item'><a class='nav-link page-scroll' href='logout.html'>Logout</a></li>
-        <li class='nav-item'><a class='nav-link page-scroll' href='pendaftaran.html?".paramEncrypt("id=$ses_id")."'>Selamat datang, ".$_SESSION["user"]."</a></li>
-                        ";
+        <li class='nav-item'><a class='nav-link page-scroll' ".paramEncrypt("id=$ses_id")."'>Selamat datang, ".$_SESSION["user"]."</a></li>   
+         ";
                     }
                    // var_dump($_SESSION)
                 ?>

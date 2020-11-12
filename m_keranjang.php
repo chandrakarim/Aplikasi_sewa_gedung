@@ -13,14 +13,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php include"head.php"; ?>
+    <?php include "head.php"; ?>
   </head>
   
 <body>
     <!-- Header Section Start -->
     <header id="slider-area">  
-    <?php include"menu.php";
-        include"carousel.php"; ?>
+    <?php include "menu.php";
+        include "carousel.php"; ?>
     </header>
     <!-- Header Section End --> 
     </aside>
@@ -49,7 +49,7 @@
                     <div class="col-sm-9">
                       <div class="form-group row">
                         <label class='col-sm-2 col-form-label'>Tanggal pesan</label>
-                        <div class='col-sm-5'>
+                        <div class='col-sm-10'>
                        <input type='date' class='form-control' name='tgl_pesan' placeholder='Tanggal pesan' required>
                       </div>                                 
                     </div>
@@ -87,8 +87,8 @@
                      <div class='form-group row'>
                       <label class='col-sm-2 col-form-label'>Paket</label>
                       <div class='col-sm-10'>
-                      <select id='id'  name='id_m_paket' required>
-                        <option selected>Pilih Paket </option>
+                      <select id='id' class='form-control form-control-lg'  name='id_m_paket' required data-error="Pilih Paket">
+                        <option selected>Pilih Paket</option>
                       <?php
                       $queryPaket = mysqli_query($konek, "select * from m_paket order by nama asc");
                       while($paket = mysqli_fetch_array($queryPaket)){
@@ -101,14 +101,14 @@
                     </div>
                         <div class="form-group row">
                         <label class='col-sm-2 col-form-label'>Deposit</label>
-                        <div class='col-sm-5'>
+                        <div class='col-sm-10'>
                         <input type="text" placeholder="-Rp Masukan Jumlah Deposit "  class="form-control" name="deposit" required data-error="Ketikkanjumlah Depostit Anda!">
                            <label class='col-sm- col-form-label'>Maksimal Deposit : Rp.1000.000,00-</label>
                       </div> 
                     </div>
                     <div class='form-group row'>
                     <label class='col-sm-2 col-form-label'>Pelaksanaan</label>
-                    <div class='col-sm-5'>
+                    <div class='col-sm-10'>
                     <input type='date' class='form-control' name='tgl' placeholder='Tanggal' required>
                       </div> 
                     </div>
@@ -121,7 +121,7 @@
                      <div class='form-group row'>
                       <label class='col-sm-2 col-form-label'>Audience</label>
                       <div class='col-sm-10'>
-                      <input type='number' class='form-control' name='orang'  placeholder='Audience' required>
+                      <input type='number' class='form-control' name='orang'  placeholder='Masukanjumlah orang' required>
                       </div>
                         </div>
         

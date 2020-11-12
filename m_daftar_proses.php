@@ -57,13 +57,13 @@ else
 		if($masukkan)
 		{
 			echo"<script>
-			window.alert('DATA PROFIL TELAH DIPERBARUI!');
+			window.alert('PROSES PENDAFTARAN ANDA BERHASIL!');
 			setTimeout(\"location.href='pendaftaran.html?".paramEncrypt("id=$id")."'\");</script>";
 		}
 		else
 		{
 			echo"<script>
-			window.alert('DATA PROFIL GAGAL DIPERBARUI!');
+			window.alert('PROSES PENDAFTARAN ANDA GAGAL!');
 			setTimeout(\"location.href='pendaftaran.html?".paramEncrypt("id=$id")."'\");</script>";
 		}
 	}
@@ -99,9 +99,15 @@ if (isset($_POST['kirim'])) {
 	$mail->Username   = "pachanddfs@gmail.com";  // alamat email kamu
 	$mail->Password   = "janti123ku";            // password GMail
 	$mail->SetFrom("pachanddfs@gmail.com", 'Admin Graha Kirani Atambua');  //Siapa yg mengirim email
-	$mail->Subject    = 'Verifikasi';
-	$mail->Body       = "No Ktp : ".$ktp."<br>"."Nama : ".$nama."<br>"."Jenis Kelamin : ".$jk."<br>"."alamat : ".$alamat."<br>".
-						"Email : ".$imel."<br>"."Password : ".$kunci."<br>"."Telepon : ".$telp; 
+	$mail->Subject    = 'Verifikasi Pendaftaran Member Geraha Kirani Atambua';
+	$mail->Body       = "Selamat Anda Telah Berhasil Melakukan Pendaftaran!".
+						"<br>"."No Ktp : ".$ktp.
+						"<br>"."Nama : ".$nama.
+						"<br>"."Jenis Kelamin : ".$jk.
+						"<br>"."alamat : ".$alamat.
+						"<br>"."Email : ".$imel.
+						"<br>"."Password : ".$kunci.
+						"<br>"."Telepon : ".$telp; 
 	$mail->AddAddress($imel);
 
 	if(!$mail->Send()) {

@@ -79,13 +79,13 @@ $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,nama,deposit,tan
     if($masukkan)
     {
         echo"<script>
-        window.alert('DATA TELAH DISIMPAN!');
+        window.alert('PROSES PEMESANAN ANDA BERHASIL!');
         setTimeout(\"location.href='formpesan.html'\");</script>";
     }
     else
     {
         echo"<script>
-        window.alert('DATA GAGAL DISIMPAN!');
+        window.alert('PROSES PEMESANAN ANDA GAGAL!');
         setTimeout(\"location.href='javascript:history.back()'\");</script>";
      }  
 }
@@ -93,7 +93,7 @@ $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,nama,deposit,tan
 if (isset($_POST['kirim'])) {
     
 	require "PHPMailer/PHPMailerAutoload.php";
-	$imel = $_POST["imel"];
+    $imel = $_POST["imel"];
 	$tgl_pesan = $_POST['tgl_pesan'];
 	$id_t_pelanggan = $_POST['id_t_pelanggan'];
 	$nama = $_POST['nama'];
@@ -116,9 +116,20 @@ if (isset($_POST['kirim'])) {
 	$mail->Username   = "pachanddfs@gmail.com";  // alamat email kamu
 	$mail->Password   = "janti123ku";            // password GMail
 	$mail->SetFrom("pachanddfs@gmail.com", 'Admin Graha Kirani Atambua');  //Siapa yg mengirim email
-	$mail->Subject    = 'Verifikasi'; 
-	$mail->Body       = "Tanggal Pesan : ".$tgl_pesan."<br>"."Nama : ".$nama."<br>"."Paket : ".$id_m_paket."<br>"."Deposit : ".$deposit."<br>".
-						"Tanggal Pelaksanaan : ".$tgl."<br>"."Jam : ".$jam."<br>"."Jumlah Orang : ".$orang; 
+	$mail->Subject    = 'Verifikasi Pemesanan Graha Kirani Atambua'; 
+    $mail->Body       = "Selamat Anda Telah Berhasil Melakukan Pemesanan!".
+                        "<br>"."Kode Booking : ".$Kodenya.
+                        "<br>"."Tanggal Pesan : ".$tgl_pesan.
+                        "<br>"."Nama : ".$nama.
+                        "<br>"."Paket : ".$id_m_paket.
+                        "<br>"."Deposit : ".$deposit.
+                        "<br>"."Tanggal Pelaksanaan : ".$tgl.
+                        "<br>"."Jam : ".$jam.
+                        "<br>"."Jumlah Orang : ".$orang.
+                        "<br>"." Note : Untuk Melakukan Proses Pembayaran Deposit(DP) Dan Pelunasan,
+                        Silahkan Anda Memasukan Kode Booking Diatas Pada Menu Konfirmasi.
+                        Jika Anda Belum Melakukan Proses Pembayaran Sesuai Dengan waktu yang di tentukan (Hari H) Maka Pesanan Anda Dianggap Hangus/Batal "
+                        ."<br>"."Terimah Kasih !"; 
 	$mail->AddAddress($imel);
 
 	if(!$mail->Send()) {

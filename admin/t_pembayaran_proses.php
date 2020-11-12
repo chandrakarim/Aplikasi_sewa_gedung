@@ -1,17 +1,16 @@
 <?php
-include"koneksi.php";
-include"function.php";
+include "koneksi.php";
+include "function.php";
 $var = decode($_SERVER['REQUEST_URI']);
 $id_t_pemesanan = mysqli_real_escape_string($konek,$_POST["id_t_pemesanan"]);
 $tgl_bayar = mysqli_real_escape_string($konek,$_POST["tgl_bayar"]);
-$cara = mysqli_real_escape_string($konek,$_POST["cara"]);
+$metode = mysqli_real_escape_string($konek,$_POST["metode"]);
 $nominal = mysqli_real_escape_string($konek,$_POST["nominal"]);
 $bank = mysqli_real_escape_string($konek,$_POST["bank"]);
-$rekening = mysqli_real_escape_string($konek,$_POST["rekening"]);
-$atas_nama = mysqli_real_escape_string($konek,$_POST["atas_nama"]);
+$status = mysqli_real_escape_string($konek,$_POST["status"]);
 
-$bukti = $_FILES["bukti"]["name"];
-$buktitmp = $_FILES["bukti"]["tmp_name"];
+// $bukti = $_FILES["bukti"]["name"];
+// $buktitmp = $_FILES["bukti"]["tmp_name"];
 
 $id = $_POST["id"];
 if(empty($id))
@@ -65,7 +64,7 @@ if(empty($id))
         }
     }
     
-    $masuk = "insert into t_pembayaran(kode,tgl_bayar,cara,id_t_pemesanan,bank,nominal,rekening,atas_nama,bukti)values('$Kodenya','$tgl_bayar','$cara','$id_t_pemesanan','$bank','$nominal','$rekening','$atas_nama','$bukti')";
+    $masuk = "insert into t_pembayaran(kode,kode,tgl_bayar,metode,id_t_pemesanan,bank,nominal,bukti,status)values('$Kodenya','$kode','$tgl_bayar','$metode','$id_t_pemesanan','$bank','$nominal','$bukti','$status)";
     $masukkan = mysqli_query($konek,$masuk);
     if($masukkan)
     {
@@ -90,7 +89,7 @@ else
 	//cek foto
     if(empty($bukti))
     {
-        $masuk = "update t_pembayaran set tgl_bayar='$tgl_bayar',cara='$cara',id_t_pemesanan='$id_t_pemesanan',bank='$bank',nominal='$nominal',rekening='$rekening',atas_nama='$atas_nama' where id='$id'";
+        $masuk = "update t_pembayaran set tgl_bayar='$tgl_bayar',metode='$metode',id_t_pemesanan='$id_t_pemesanan',bank='$bank',nominal='$nominal',rekening='$rekening',atas_nama='$atas_nama' where id='$id'";
     }
     else
     {

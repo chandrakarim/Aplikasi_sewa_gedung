@@ -52,7 +52,7 @@
                                     <th>Orang</th>
                                     <th>Metode</th>
                                     <th>Bukti</th>
-                                 
+                                    <th>Bank</>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -62,7 +62,9 @@
                                   $numHarga = number_format($list["deposit"]);
                                     $queryPelanggan = mysqli_query($konek, "select * from t_pelanggan where id = '".$list["id_t_pelanggan"]."'");
                                     $pelanggan = mysqli_fetch_array($queryPelanggan);
-                                    
+                                    //
+                                    $queryBank = mysqli_query($konek, "select * from t_bank where id = '".$list["id_t_bank"]."'");
+                                    $bank = mysqli_fetch_array($queryBank);
 
                                     $queryPaket = mysqli_query($konek, "select * from m_paket where id = '".$list["id_m_paket"]."'");
                                     $paket = mysqli_fetch_array($queryPaket);
@@ -79,8 +81,9 @@
                                         <td>'.$list["orang"].'</td>
                                         <td>'.$list["metode"].'</td>
                                         <td>'.$list["bukti"].'</td>
-                                  
-                                        <td>'.$list["setuju"].'</td>
+                                        <td>'.$bank["bank"].'</td>
+                                         
+                                        <td>'.$list["status"].'</td>
                                     </tr>   
                                     ';
                                 }

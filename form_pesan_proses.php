@@ -1,16 +1,18 @@
 <?php
-include"admin/koneksi.php";
-include"admin/function.php";
+include "admin/koneksi.php";
+include "admin/function.php";
 $var = decode($_SERVER['REQUEST_URI']);
 $kode = $_POST["kode"];
 $metode = $_POST["metode"];
+$id_t_bank = $_POST["id_t_bank"]; 
 $bukti = $_FILES["bukti"]["name"];
-//var_dump($_POST);
+$status = $_POST['status'];
+//var_dump($id);
 
 
 
   //edit
-    $masuk = "update t_pemesanan set metode='$metode',bukti='$bukti' where kode ='$kode'";
+    $masuk = "update t_pemesanan set metode='$metode',bukti='$bukti',id_t_bank='$id_t_bank',status='$status' where kode ='$kode'";
 //var_dump($masuk); die();
     $masukkan = mysqli_query($konek,$masuk);
     
@@ -18,7 +20,7 @@ $bukti = $_FILES["bukti"]["name"];
     {
         echo"<script>
         window.alert('DATA TELAH DISIMPAN!');
-        setTimeout(\"location.href='formpesan.html'\");</script>";
+        setTimeout(\"location.href='formkonfirmasi.html'\");</script>";
     }
     else
     {
@@ -26,6 +28,6 @@ $bukti = $_FILES["bukti"]["name"];
         window.alert('DATA GAGAL DISIMPAN!');
         setTimeout(\"location.href='formpesan.html?".paramEncrypt("id=$id")."'\");</script>";
     }
-}
+
 
 ?>

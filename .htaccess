@@ -14,6 +14,8 @@ RewriteRule ^keranjang.html$ m_keranjang.php
 RewriteRule ^keranjangproses.html$ m_keranjang_proses.php
 RewriteRule ^formpesan.html$ form_pesan.php
 RewriteRule ^form_pesan_proses.html$ form_pesan_proses.php
+RewriteRule ^formkonfirmasi.html$ form_konfirmasi.php
+RewriteRule ^form_konfirmasi_proses.html$ form_konfirmasi_proses.php
 
 
 RewriteRule ^kontak.html$ m_kontak.php

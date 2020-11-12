@@ -1,16 +1,17 @@
 <?php
-include"koneksi.php";
-include"function.php";
+include "koneksi.php";
+include "function.php";
 $var = decode($_SERVER['REQUEST_URI']);
 $tgl_pesan = $_POST["tgl_pesan"];
 $id_t_pelanggan = mysqli_real_escape_string($konek,$_POST["id_t_pelanggan"]);
 $id_m_paket = mysqli_real_escape_string($konek,$_POST["id_m_paket"]);
+$id_t_bank = mysqli_real_escape_string($konek,$_POST["id_t_bank"]);
 $tanggal = mysqli_real_escape_string($konek,$_POST["tanggal"]);
 $jam = mysqli_real_escape_string($konek,$_POST["jam"]);
 $orang = mysqli_real_escape_string($konek,$_POST["orang"]);
 $catatan = mysqli_real_escape_string($konek,$_POST["catatan"]);
 $setuju = $_POST["setuju"];
-
+//var_dump($id_t_bank); die ();
 $id = $_POST["id"];
 if(empty($id))
 {
@@ -62,7 +63,7 @@ if(empty($id))
             $Kodenya = implode("",$arrayKodenya);
         }
     }
-    $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,tanggal,jam,orang,id_m_paket,catatan,setuju)values('$Kodenya','$tgl_pesan','$id_t_pelanggan','$tanggal','$jam','$orang','$id_m_paket','$catatan','$setuju')";
+    $masuk = "insert into t_pemesanan(kode,tgl_pesan,id_t_pelanggan,tanggal,jam,orang,id_m_paket,id_t_bank,catatan,setuju)values('$Kodenya','$tgl_pesan','$id_t_pelanggan','$tanggal','$jam','$orang','$id_m_paket','$id_t_bank','$catatan','$setuju')";
     $masukkan = mysqli_query($konek,$masuk);
     if($masukkan)
     {
@@ -80,7 +81,7 @@ if(empty($id))
 else
 {
 	//edit
-    $masuk = "update t_pemesanan set tgl_pesan='$tgl_pesan',id_t_pelanggan='$id_t_pelanggan',tanggal='$tanggal',jam='$jam',orang='$orang',id_m_paket='$id_m_paket',catatan='$catatan',setuju='$setuju' where id='$id'";
+    $masuk = "update t_pemesanan set tgl_pesan='$tgl_pesan',id_t_pelanggan='$id_t_pelanggan',tanggal='$tanggal',jam='$jam',orang='$orang',id_m_paket='$id_m_paket',id_t_bank='$id_t_bank',catatan='$catatan',setuju='$setuju' where id='$id'";
     $masukkan = mysqli_query($konek,$masuk);
     if($masukkan)
     {

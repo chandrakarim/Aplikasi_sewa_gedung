@@ -1,4 +1,4 @@
- <?php 
+<?php 
   session_start();
   require "admin/koneksi.php";
   require "admin/function.php";
@@ -29,7 +29,7 @@
     <div id="pricing" class="section pricing-section">
       <div class="container">
         <div class="section-header">          
-          <h2 class="section-title">Konfirmasi Deposit</h2>
+          <h2 class="section-title">Konfirmasi Pesan</h2>
          <?php
           $akun = mysqli_query($konek,"select * from t_pemesanan order by id desc");
           while($list = mysqli_fetch_array($akun)){
@@ -72,7 +72,7 @@
 
         ?>
           </tbody>
-                <form class='form-horizontal' action="form_pesan_proses.html" method="post"  enctype='multipart/form-data'>
+                <form class='form-horizontal' action="form_konfirmasi_proses.html" method="post"  enctype='multipart/form-data'>
                   <input type="hidden" value="<?php echo $antarid; ?>" name="id">
                  <div class='card-body'>
                  
@@ -83,10 +83,10 @@
                         <div class='col-sm-10'>
                         <?php
                        $id = $_SESSION["id"];
-                  //  var_dump($_SESSION);
+              //      var_dump($_SESSION); die();
                       //var_dump($user);    
                         ?>
-                        <input type="hidden" name="id_t_pelanggan"value="<?php echo $id ?>">                     
+                        <input type="hidden" name="id_t_pelanggan" value="<?php echo $id ?>">                     
                       </div> 
                     </div>
                     <!-- <div class="col-sm-9">
@@ -139,9 +139,16 @@
                         <div class="form-group row">
                         <label class='col-sm-2 col-form-label'>KODE Booking</label>
                         <div class='col-sm-10'>
-                        <input type="text" placeholder="Masukan Kode Booking Anda!"  class="form-control" name="kode"  required data-error="Ketikkan Kode Booking Anda!">
+                        <input type="text" placeholder="Masukan Nama Lengkap Anda"  class="form-control" name="kode_pesan"  required data-error="Ketikkan Nama Lengkap Anda!">
                       </div> 
                     </div>
+                    <div class="col-sm-9">
+                      <div class="form-group row">
+                        <label class='col-sm-2 col-form-label'>Tanggal Bayar</label>
+                        <div class='col-sm-5'>
+                        <input type='date' class='form-control' name='tgl_bayar' placeholder='Tanggal pesan' required>                        
+                      </div>                                 
+                    </div>                    
                         <div class='form-group row'>
                       <label class='col-sm-2 col-form-label'>Metode Pembayaran</label>
                       <div class='col-sm-10'>
@@ -155,6 +162,12 @@
                       </div>
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label class='col-sm-2 col-form-label'>Nominal</label>
+                        <div class='col-sm-5'>
+                        <input type="text" placeholder="-Rp Masukan Jumlah Nominal "  class="form-control" name="nominal" required data-error="Ketikkanjumlah Nominal Anda!">                 
+                      </div> 
+                    </div>
                       <div class='form-group row'>
                       <label class='col-sm-2 col-form-label'>Bank</label>
                       <div class='col-sm-10'>
@@ -184,7 +197,7 @@
                     </div>
                     <div class="form-group row">
                         <div class='col-sm-10'>
-                        <input type="hidden" name="status"value="booking">                     
+                        <input type="hidden" name="status"value="Lunas">                     
                       </div> 
                     </div>
                     <div class="col-sm-9">
